@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warlock Boss Tracker - Classic MoP</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="login-screen" class="screen">
+        <div class="login-container">
+            <h1>Warlock Boss Tracker</h1>
+            <p class="subtitle">Classic Mists of Pandaria</p>
+            <form id="login-form">
+                <div class="input-group">
+                    <label for="password">Wachtwoord:</label>
+                    <input type="password" id="password" required>
+                </div>
+                <button type="submit">Inloggen</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="app-screen" class="screen hidden">
+        <header>
+            <h1>Warlock Boss Tracker</h1>
+            <button id="logout-btn" class="btn-secondary">Uitloggen</button>
+        </header>
+
+        <main>
+            <div class="boss-list">
+                <div class="boss-card" data-boss="jinrokh">
+                    <h2>Jin'rokh the Breaker</h2>
+                    <div class="boss-spec">
+                        <strong>Affliction</strong>
+                    </div>
+                    <div class="notes-container">
+                        <label for="jinrokh-notes">Notities:</label>
+                        <textarea id="jinrokh-notes" placeholder="Imp voor zelf dispell, LET OP GEEN ANDEREN DISPELLEN"></textarea>
+                    </div>
+                </div>
+
+                <div class="boss-card" data-boss="horridon">
+                    <h2>Horridon</h2>
+                    <div class="boss-spec">
+                        <strong>Destruction</strong>
+                    </div>
+                    <div class="notes-container">
+                        <label for="horridon-notes">Notities:</label>
+                        <textarea id="horridon-notes" placeholder="Talent: Kil'jaeden's Cunning dus geen fel flame amigo"></textarea>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
+
