@@ -292,6 +292,93 @@ main {
     min-height: 150px;
 }
 
+/* Reforge Card */
+.reforge-card {
+    grid-column: 1 / -1;
+    border: 1px solid rgba(157, 78, 221, 0.3);
+}
+
+.reforge-card h2 {
+    color: #c77dff;
+}
+
+.reforge-container {
+    margin-top: 1rem;
+}
+
+.reforge-section {
+    margin-bottom: 2rem;
+}
+
+.reforge-section:last-child {
+    margin-bottom: 0;
+}
+
+.reforge-section h3 {
+    color: #9d4edd;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.reforge-setting {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+}
+
+.reforge-setting label {
+    color: #e0e0e0;
+    font-weight: 500;
+}
+
+.reforge-value {
+    color: #9d4edd;
+    font-weight: 600;
+    font-size: 1.1rem;
+    background: rgba(157, 78, 221, 0.2);
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+}
+
+.stat-weights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+}
+
+.stat-weight-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.stat-weight-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(157, 78, 221, 0.2);
+    border-color: rgba(157, 78, 221, 0.4);
+}
+
+.stat-weight-item label {
+    color: #e0e0e0;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.stat-weight-item .reforge-value {
+    font-size: 1.2rem;
+}
+
 .private-card {
     grid-column: 1 / -1;
     border: 1px solid rgba(157, 78, 221, 0.3);
