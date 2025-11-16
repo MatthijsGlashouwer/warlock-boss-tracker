@@ -2,6 +2,7 @@
 const PASSWORD_KEY = 'warlock_password';
 const LOGIN_KEY = 'warlock_logged_in';
 const NOTES_KEY = 'warlock_boss_notes';
+const TODOS_KEY = 'warlock_todos';
 
 // Set default password if not exists (you can change this)
 if (!localStorage.getItem(PASSWORD_KEY)) {
@@ -31,6 +32,8 @@ function showAppScreen() {
     document.getElementById('login-screen').classList.add('hidden');
     document.getElementById('app-screen').classList.remove('hidden');
     loadBossNotes();
+    loadTodos();
+    setupTodoForm();
 }
 
 function loadBossNotes() {
@@ -141,6 +144,104 @@ document.getElementById('logout-btn').addEventListener('click', logout);
 document.getElementById('jinrokh-notes').addEventListener('input', saveBossNotes);
 document.getElementById('horridon-notes').addEventListener('input', saveBossNotes);
 document.getElementById('private-notes').addEventListener('input', saveBossNotes);
+
+// Todo functionality
+function loadTodos() {
+    const todos = JSON.parse(localStorage.getItem(TODOS_KEY) || '[]');
+    
+    // Add default todo if empty
+    if (todos.length === 0) {
+        todos.push({
+            id: Date.now(),
+            text: "Import wa-groep van https://wago.io/qfsQpbCn7 en plaats het Sosam backend stuk in het warlock wa gedeelte",
+            completed: false
+        });
+        saveTodos(todos);
+    }
+    
+    renderTodos(todos);
+}
+
+function saveTodos(todos) {
+    localStorage.setItem(TODOS_KEY, JSON.stringify(todos));
+}
+
+function renderTodos(todos) {
+    const todoList = document.getElementById('todo-list');
+    todoList.innerHTML = '';
+    
+    todos.forEach(todo => {
+        const li = document.createElement('li');
+        li.className = `todo-item ${todo.completed ? 'completed' : ''}`;
+        
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.checked = todo.completed;
+        checkbox.addEventListener('change', () => toggleTodo(todo.id));
+        
+        const text = document.createElement('span');
+        text.className = 'todo-text';
+        text.textContent = todo.text;
+        
+        const deleteBtn = document.createElement('button');
+        deleteBtn.className = 'todo-delete';
+        deleteBtn.textContent = '×';
+        deleteBtn.addEventListener('click', () => deleteTodo(todo.id));
+        
+        li.appendChild(checkbox);
+        li.appendChild(text);
+        li.appendChild(deleteBtn);
+        todoList.appendChild(li);
+    });
+}
+
+function addTodo(text) {
+    const todos = JSON.parse(localStorage.getItem(TODOS_KEY) || '[]');
+    todos.push({
+        id: Date.now(),
+        text: text,
+        completed: false
+    });
+    saveTodos(todos);
+    renderTodos(todos);
+}
+
+function toggleTodo(id) {
+    const todos = JSON.parse(localStorage.getItem(TODOS_KEY) || '[]');
+    const todo = todos.find(t => t.id === id);
+    if (todo) {
+        todo.completed = !todo.completed;
+        saveTodos(todos);
+        renderTodos(todos);
+    }
+}
+
+function deleteTodo(id) {
+    const todos = JSON.parse(localStorage.getItem(TODOS_KEY) || '[]');
+    const filtered = todos.filter(t => t.id !== id);
+    saveTodos(filtered);
+    renderTodos(filtered);
+}
+
+// Todo form event listener
+function setupTodoForm() {
+    const todoForm = document.getElementById('todo-form');
+    if (todoForm) {
+        // Remove existing listener if any
+        const newForm = todoForm.cloneNode(true);
+        todoForm.parentNode.replaceChild(newForm, todoForm);
+        
+        newForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const input = document.getElementById('todo-input');
+            const text = input.value.trim();
+            if (text) {
+                addTodo(text);
+                input.value = '';
+            }
+        });
+    }
+}
 
 // Check if already logged in on page load
 if (checkLogin()) {
