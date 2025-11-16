@@ -34,6 +34,8 @@ function showAppScreen() {
     loadBossNotes();
     loadTodos();
     setupTodoForm();
+    setupTabs();
+    setupTotNotes();
 }
 
 function loadBossNotes() {
@@ -112,13 +114,17 @@ Worldboss check macro (copy pastable):
     document.getElementById('jinrokh-notes').value = notes.jinrokh || '';
     document.getElementById('horridon-notes').value = notes.horridon || '';
     document.getElementById('private-notes').value = notes.private || '';
+    if (document.getElementById('tot-notes')) {
+        document.getElementById('tot-notes').value = notes.tot || '';
+    }
 }
 
 function saveBossNotes() {
     const notes = {
         jinrokh: document.getElementById('jinrokh-notes').value,
         horridon: document.getElementById('horridon-notes').value,
-        private: document.getElementById('private-notes').value
+        private: document.getElementById('private-notes').value,
+        tot: document.getElementById('tot-notes')?.value || ''
     };
     localStorage.setItem(NOTES_KEY, JSON.stringify(notes));
 }
@@ -144,6 +150,34 @@ document.getElementById('logout-btn').addEventListener('click', logout);
 document.getElementById('jinrokh-notes').addEventListener('input', saveBossNotes);
 document.getElementById('horridon-notes').addEventListener('input', saveBossNotes);
 document.getElementById('private-notes').addEventListener('input', saveBossNotes);
+
+// Tab switching functionality
+function setupTabs() {
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+    
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const targetTab = button.getAttribute('data-tab');
+            
+            // Remove active class from all buttons and contents
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabContents.forEach(content => content.classList.remove('active'));
+            
+            // Add active class to clicked button and corresponding content
+            button.classList.add('active');
+            document.getElementById(`${targetTab}-tab`).classList.add('active');
+        });
+    });
+}
+
+// Setup Tot notes auto-save
+function setupTotNotes() {
+    const totNotes = document.getElementById('tot-notes');
+    if (totNotes) {
+        totNotes.addEventListener('input', saveBossNotes);
+    }
+}
 
 // Todo functionality
 function loadTodos() {

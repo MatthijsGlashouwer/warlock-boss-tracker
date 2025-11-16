@@ -28,51 +28,86 @@
         </header>
 
         <main>
-            <div class="boss-list">
-                <div class="boss-card" data-boss="jinrokh">
-                    <h2>Jin'rokh the Breaker</h2>
-                    <div class="boss-spec">
-                        <strong>Affliction</strong>
+            <nav class="tab-nav">
+                <button class="tab-btn active" data-tab="raids">🏰 Raids</button>
+                <button class="tab-btn" data-tab="notes">🔒 Notities</button>
+                <button class="tab-btn" data-tab="todos">📋 Todo</button>
+            </nav>
+
+            <!-- Raids Tab -->
+            <div id="raids-tab" class="tab-content active">
+                <div class="boss-list">
+                    <div class="boss-card" data-boss="jinrokh">
+                        <h2>Jin'rokh the Breaker</h2>
+                        <div class="boss-spec">
+                            <strong>Affliction</strong>
+                        </div>
+                        <div class="notes-container">
+                            <label for="jinrokh-notes">Notities:</label>
+                            <textarea id="jinrokh-notes" placeholder="Imp voor zelf dispell, LET OP GEEN ANDEREN DISPELLEN"></textarea>
+                        </div>
                     </div>
-                    <div class="notes-container">
-                        <label for="jinrokh-notes">Notities:</label>
-                        <textarea id="jinrokh-notes" placeholder="Imp voor zelf dispell, LET OP GEEN ANDEREN DISPELLEN"></textarea>
+
+                    <div class="boss-card" data-boss="horridon">
+                        <h2>Horridon</h2>
+                        <div class="boss-spec">
+                            <strong>Destruction</strong>
+                        </div>
+                        <div class="notes-container">
+                            <label for="horridon-notes">Notities:</label>
+                            <textarea id="horridon-notes" placeholder="Talent: Kil'jaeden's Cunning dus geen fel flame amigo"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="boss-card raid-info-card">
+                        <h2>Throne of Thunder</h2>
+                        <div class="boss-spec">
+                            <strong>Videos</strong>
+                        </div>
+                        <div class="notes-container">
+                            <label>Throne of Thunder video gids:</label>
+                            <div class="video-link-container">
+                                <a href="https://www.twitch.tv/videos/2618690918?filter=archives&sort=time" target="_blank" rel="noopener noreferrer" class="video-link">
+                                    📺 Throne of Thunder - Twitch VOD
+                                </a>
+                            </div>
+                            <textarea id="tot-notes" class="boss-notes" placeholder="Throne of Thunder notities..."></textarea>
+                        </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="boss-card" data-boss="horridon">
-                    <h2>Horridon</h2>
-                    <div class="boss-spec">
-                        <strong>Destruction</strong>
-                    </div>
-                    <div class="notes-container">
-                        <label for="horridon-notes">Notities:</label>
-                        <textarea id="horridon-notes" placeholder="Talent: Kil'jaeden's Cunning dus geen fel flame amigo"></textarea>
+            <!-- Persoonlijke Notities Tab -->
+            <div id="notes-tab" class="tab-content">
+                <div class="boss-list">
+                    <div class="boss-card private-card" data-boss="private">
+                        <h2>🔒 Persoonlijke Notities</h2>
+                        <div class="boss-spec">
+                            <strong>Algemeen</strong>
+                        </div>
+                        <div class="notes-container">
+                            <label for="private-notes">Privé warlock notities:</label>
+                            <textarea id="private-notes" class="large-textarea" placeholder="Persoonlijke tips, macros, rotations..."></textarea>
+                        </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="boss-card private-card" data-boss="private">
-                    <h2>🔒 Persoonlijke Notities</h2>
-                    <div class="boss-spec">
-                        <strong>Algemeen</strong>
-                    </div>
-                    <div class="notes-container">
-                        <label for="private-notes">Privé warlock notities:</label>
-                        <textarea id="private-notes" class="large-textarea" placeholder="Persoonlijke tips, macros, rotations..."></textarea>
-                    </div>
-                </div>
-
-                <div class="boss-card todo-card" data-boss="todos">
-                    <h2>📋 Todo Lijst</h2>
-                    <div class="boss-spec">
-                        <strong>Taken</strong>
-                    </div>
-                    <div class="todo-container">
-                        <form id="todo-form" class="todo-form">
-                            <input type="text" id="todo-input" placeholder="Nieuwe taak toevoegen..." required>
-                            <button type="submit" class="btn-todo">Toevoegen</button>
-                        </form>
-                        <ul id="todo-list" class="todo-list"></ul>
+            <!-- Todo Tab -->
+            <div id="todos-tab" class="tab-content">
+                <div class="boss-list">
+                    <div class="boss-card todo-card" data-boss="todos">
+                        <h2>📋 Todo Lijst</h2>
+                        <div class="boss-spec">
+                            <strong>Taken</strong>
+                        </div>
+                        <div class="todo-container">
+                            <form id="todo-form" class="todo-form">
+                                <input type="text" id="todo-input" placeholder="Nieuwe taak toevoegen..." required>
+                                <button type="submit" class="btn-todo">Toevoegen</button>
+                            </form>
+                            <ul id="todo-list" class="todo-list"></ul>
+                        </div>
                     </div>
                 </div>
             </div>

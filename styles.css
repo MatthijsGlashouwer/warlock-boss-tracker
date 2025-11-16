@@ -130,6 +130,60 @@ main {
     width: 100%;
 }
 
+/* Tab Navigation */
+.tab-nav {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 0;
+}
+
+.tab-btn {
+    background: transparent;
+    border: none;
+    color: #a0a0a0;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+    position: relative;
+    top: 2px;
+}
+
+.tab-btn:hover {
+    color: #c77dff;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.tab-btn.active {
+    color: #9d4edd;
+    border-bottom-color: #9d4edd;
+    background: rgba(157, 78, 221, 0.1);
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+    animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .boss-list {
     display: grid;
     gap: 1.5rem;
@@ -199,6 +253,43 @@ main {
 
 .notes-container textarea::placeholder {
     color: #888;
+}
+
+.raid-info-card {
+    grid-column: 1 / -1;
+}
+
+.raid-info-card h2 {
+    color: #c77dff;
+}
+
+.video-link-container {
+    margin-bottom: 1rem;
+}
+
+.video-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    background: rgba(145, 70, 255, 0.2);
+    border: 1px solid rgba(145, 70, 255, 0.4);
+    border-radius: 6px;
+    color: #c77dff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.video-link:hover {
+    background: rgba(145, 70, 255, 0.3);
+    border-color: rgba(145, 70, 255, 0.6);
+    color: #d4a5ff;
+    transform: translateY(-1px);
+}
+
+.boss-notes {
+    min-height: 150px;
 }
 
 .private-card {
@@ -360,6 +451,18 @@ main {
 
     .boss-list {
         grid-template-columns: 1fr;
+    }
+
+    .tab-nav {
+        flex-wrap: wrap;
+        gap: 0.25rem;
+    }
+
+    .tab-btn {
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+        flex: 1;
+        min-width: 0;
     }
 }
 
