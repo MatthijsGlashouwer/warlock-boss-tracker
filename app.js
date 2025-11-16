@@ -103,7 +103,7 @@ niet usen:
 /cast !Fire and Brimstone
 
 Worldboss check macro (copy pastable):
-/run for k, v in pairs({ Galleon = 32098, Sha = 32099, Nalak = 32518, Oondasta = 32519, Rukhmar = 37464}) do print(format("%s: %s", k, C_QuestLog.IsQuestFlaggedCompleted(v) and "\124cff00ff00Yes\124r" or "\124cffff0000No\124r")) end`;
+/run for k, v in pairs({ Galleon = 32098, Sha = 32099, Nalak = 32518, Oondasta = 32519, Rukhmar = 37464}) do print(format("%s: %s", k, C_QuestLog.IsQuestFlaggedCompleted(v) and "\\124cff00ff00Yes\\124r" or "\\124cffff0000No\\124r")) end`;
     }
     
     document.getElementById('jinrokh-notes').value = notes.jinrokh || '';
