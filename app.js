@@ -51,6 +51,9 @@ function loadBossNotes() {
     if (!notes.council) {
         notes.council = "Shivarra als pet";
     }
+    if (!notes.tortos) {
+        notes.tortos = "Glyph of exhaustion! Default setup, Shivarra als pet";
+    }
     if (!notes.private) {
         notes.private = `Hit = Exp (15%) > Haste (6637/9778/13737) > Mastery > Haste > Crit
 
@@ -117,6 +120,7 @@ Worldboss check macro (copy pastable):
     document.getElementById('jinrokh-notes').value = notes.jinrokh || '';
     document.getElementById('horridon-notes').value = notes.horridon || '';
     document.getElementById('council-notes').value = notes.council || '';
+    document.getElementById('tortos-notes').value = notes.tortos || '';
     document.getElementById('private-notes').value = notes.private || '';
     if (document.getElementById('tot-notes')) {
         document.getElementById('tot-notes').value = notes.tot || '';
@@ -128,6 +132,7 @@ function saveBossNotes() {
         jinrokh: document.getElementById('jinrokh-notes').value,
         horridon: document.getElementById('horridon-notes').value,
         council: document.getElementById('council-notes').value,
+        tortos: document.getElementById('tortos-notes').value,
         private: document.getElementById('private-notes').value,
         tot: document.getElementById('tot-notes')?.value || ''
     };
@@ -155,6 +160,7 @@ document.getElementById('logout-btn').addEventListener('click', logout);
 document.getElementById('jinrokh-notes').addEventListener('input', saveBossNotes);
 document.getElementById('horridon-notes').addEventListener('input', saveBossNotes);
 document.getElementById('council-notes').addEventListener('input', saveBossNotes);
+document.getElementById('tortos-notes').addEventListener('input', saveBossNotes);
 document.getElementById('private-notes').addEventListener('input', saveBossNotes);
 
 // Tab switching functionality
